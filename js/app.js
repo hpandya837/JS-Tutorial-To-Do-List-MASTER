@@ -9,6 +9,7 @@ const input = document.getElementById("input");
 
 //classes names
 // Classes names
+const LINE_THROUGH = "lineThrough";
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
 const LINE_THROUGH = "lineThrough";
@@ -18,6 +19,8 @@ const options = {weekday:"long", month:"short", day:"numeric"};
 const today = newDate();
 //Variables
 let LIST, id;
+let LIST = []
+,id = 0;
 
 // Show today's date
 const options = { weekday: "long", month: "short", day: "numeric" };
@@ -29,6 +32,16 @@ dateElement.innerHtml = today.toLocalDateString("en-US", options);
 // Add to do function
 function addToDo(toDo, id, done, trash) {
     if(trash){return;}
+    addToDo(toDo, id, false, false);
+      LIST.push({
+        name: toDo,
+        id: id,
+        done: false,
+        trash: false
+
+      });
+      id++;
+
 
 //add to do function
 function addToDo(toDo){
@@ -69,3 +82,11 @@ document.addEventListener("keyup", function(even) {
 });
 // Example usage
 addToDo("Coffee", 1, true, false,);
+//Complete the to-do function
+function completeToDo(element){
+    element.classList.toggle(CHECK);
+    element.classList.toggle(UNCHECK);
+    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH)
+
+    LIST[element.id].done = LIST[element.id].done ? false:true;
+}
