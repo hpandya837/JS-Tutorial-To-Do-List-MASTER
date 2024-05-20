@@ -106,7 +106,15 @@ function completeToDo(element){
     LIST[element.id].done = LIST[element.id].done ? false:true;
 }
 
-
+if(data){
+    LIST = JSON.parse(data);
+    id = LIST.length; //set the id to the last one in the list
+    loadList(LIST); //load the list to the user interface
+}else{ 
+    //if data is not empty
+    LIST = [];
+    id = 0;
+}
 LIST[element.id].done = LIST[element.id].done ? false:true;
 }
 //Remove the to-do
