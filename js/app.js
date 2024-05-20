@@ -55,7 +55,17 @@ localStorage.setItem("TODO", JSON.stringify(LIST));
 
 
       id++;
-
+      //Load items to the user's interface
+      function loadList(array){
+          array.forEach(function(item){
+              addToDo(item.name, item.id, item.done, item.trash);
+          })
+      }
+      //clear the local storage
+      clear.addEventListener("click", function(){
+          localStorage.clear();
+          location.reload();
+      })
     }
 
 //add to do function
