@@ -14,6 +14,15 @@ const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
 const LINE_THROUGH = "lineThrough";
 
+//Get item from local storage
+let data = localStorage.getItem("TODO");
+
+//Check if data is not empty
+
+//Add item to local storage
+localStorage.setItem("TODO", JSON.stringify(LIST));
+
+
 //show todays date
 const options = {weekday:"long", month:"short", day:"numeric"};
 const today = newDate();
@@ -41,7 +50,13 @@ function addToDo(toDo, id, done, trash) {
 
       });
       id++;
+//Add item to local storage
+localStorage.setItem("TODO", JSON.stringify(LIST));
 
+
+      id++;
+
+    }
 
 //add to do function
 function addToDo(toDo){
@@ -110,5 +125,8 @@ list.addEventListener("click", function(event){
     }else if(elementJob == "remove"){
         removeToDo(element);
     }
+})
+ //Add item to local storage
+ localStorage.setItem("TODO", JSON.stringify(LIST));
 })
 }
